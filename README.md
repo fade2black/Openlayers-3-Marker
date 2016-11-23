@@ -1,7 +1,7 @@
 
-#### Introduction
+### Introduction
 OpenLayers 3 does not provide a class for creating markers on a map. In this tutorial I want to create a Javascript wrapper object that provides a method for creating a marker on a map by latitude and longitude.
-#### Map Maker
+### Map Maker
 We start with the method <code>createOSMap</code> which takes <code>lon</code>, <code>lat</code>, <code>zoom</code> values and creates a map. It also creates additional layer for markers.
 ```javascript
 var MapMaker = function()
@@ -129,7 +129,7 @@ markerCount: function()
 }
 ```
  
-#### Making Markers Interactive
+### Making Markers Interactive
 Now that our map maker is ready we make markers interactive, in particular markers will response to the single-click event. We will add method <code>onMarkerSingleClick</code> which takes two arguments <code>id</code> and <code>callback</code> function. So, we introduce a new variable <code>markerClickCallbacks</code> to store callbacks:
 ```javascript
 var MapMaker = function()
@@ -193,7 +193,7 @@ mymap.onMarkerSingleClick(2, function(obj){
 And finally we need to delete callbacks when we delete markers, so add <code>delete markerClickCallbacks[id]</code> to <code>deleteMarkerById</code> method, and <code>markerClickCallbacks = Object()</code> to <code>removeAllMarkers</code>.
 The final version of <code>mapmaker.js</code>, together with example, is [here](https://jsfiddle.net/bayram_kuliyev/ondk4vmu/). 
 
-#### Marker Animation
+### Marker Animation
 ```html
 <html lang="en">
   <head>
