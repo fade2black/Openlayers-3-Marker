@@ -1,5 +1,5 @@
 
-### Introduction
+## Introduction
 OpenLayers 3 does not provide a class for creating markers on a map. In this tutorial I want to create a Javascript wrapper object that provides a method for creating a marker on a map by latitude and longitude.
 ### Map Maker
 We start with the method <code>createOSMap</code> which takes <code>lon</code>, <code>lat</code>, <code>zoom</code> values and creates a map. It also creates additional layer for markers.
