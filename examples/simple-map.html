@@ -1,0 +1,27 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://openlayers.org/en/v3.19.1/css/ol.css" type="text/css">
+    <script src="https://openlayers.org/en/v3.19.1/build/ol.js" type="text/javascript"></script>
+    <script src="mapmaker.js" type="text/javascript"></script>
+    <title>Map Maker</title>
+  </head>
+  <body>
+    <h2>Welcome to Ashgabat</h2>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+
+    mymap = MapMaker();
+    mymap.createOSMap(58.368245318110304,37.89354632472305, 15);
+    mymap.addMarker(1, 58.350200008110304,37.89834632472305);
+    mymap.addMarker(2, 58.369345318110304,37.89354632472305);
+
+    mymap.onMarkerSingleClick(1, function(obj){
+      alert("Hi, my id is " + obj.id)
+    });
+    mymap.onMarkerSingleClick(2, function(obj){
+      alert("Hello, my id is " + obj.id)
+    });
+
+    </script>
+  </body>
+</html>
