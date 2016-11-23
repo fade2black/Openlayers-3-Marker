@@ -1,0 +1,58 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://openlayers.org/en/v3.19.1/css/ol.css" type="text/css">
+    <script src="https://openlayers.org/en/v3.19.1/build/ol.js" type="text/javascript"></script>
+    <script src="mapmaker.js" type="text/javascript"></script>
+    <title>Map Maker</title>
+  </head>
+  <body>
+    <h2>Welcome to Ashgabat</h2>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+
+      mymap = MapMaker();
+
+      function generate_points(lat1, lon1, lat2, lon2, pcount)
+      {
+        var delta_lat = (lat2 - lat1) / (pcount * 1.0);
+        var delta_lon = (lon2 - lon1) / (pcount * 1.0);
+        var points = [];
+
+        for(var i=0; i<pcount; i++)
+        {
+          points.push({lat: lat1 + delta_lat*i, lon:lon1 + delta_lon*i })
+        }
+
+        points.push({lat:lat2, lon:lon2});
+        return points;
+      }
+
+      function animate(points)
+      {
+        mymap.addMarker(2005, points[0].lon, points[0].lat );
+        var pointIndex = 0;
+        var setIntervalId = setInterval(
+         function()
+         {
+           if (pointIndex < points.length-1)
+           {
+             pointIndex++;
+             mymap.moveMarker(2005, points[pointIndex].lon, points[pointIndex].lat);
+           }
+           else
+           {
+             clearInterval(setIntervalId);
+           }
+
+         }, 10);
+      }
+
+      mymap.createOSMap(58.368245318110304,37.89354632472305, 15);
+      var start = {lat: 37.89741536207012, lon:58.369356322245636};
+      var finish = {lat: 37.900048319061995, lon:58.350462841944726};
+      //generate 640 points
+      animate(generate_points(start.lat, start.lon, finish.lat, finish.lon, 640));
+
+    </script>
+  </body>
+</html>
